@@ -62,11 +62,15 @@ router.get("/:id", async (req, res) => {
 router.put("/:id", async (req, res) => {
   let { name } = req.body.checklist;
   let checklist = await Checklist.findById(req.params.id);
+  //console.log({ checklist });
+  //console.log({ name });
   try {
-    await checklist.update({ name });
+    await checklist.updateOne({ name: name });
+    //console.log(result);
     res.redirect("/checklists");
   } catch (error) {
     let errors = error.errors;
+
     res
       .status(422)
       .render("checklists/edit", { checklist: { ...checklist, errors } });
