@@ -14,7 +14,7 @@ include('../layouts/menu')%>
             type="text"
             name="task[name]"
             placeholder="Lista de Tarefas"
-            value="<%=task.name%>"
+            value="  <%=task.name%>"
           />
           <% if(task.error && task.error.hasOwnProperty('name')){%>
           <p class="is-danger help"><%= task.error.name.message%></p>
